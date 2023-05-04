@@ -1,5 +1,13 @@
-<mat-toolbar color="primary">
-  <span>Skipper bot</span>
+<mat-toolbar color="primary" class="nav-bar mat-elevation-z6">
+    <mat-toolbar-row>
+        <span style="margin-right: 20px">Skipper bot</span>
+        <button mat-button><mat-icon>map</mat-icon> Overview</button>
+        <button mat-button><mat-icon>directions_boat</mat-icon> My bots</button>
+        <button mat-button><mat-icon>build</mat-icon> Create new</button>
+        <button mat-button><mat-icon>apps</mat-icon> Bots library</button>
+        <span class="spacer"></span>
+        <button mat-button><mat-icon>account_circle</mat-icon> Account</button>
+    </mat-toolbar-row>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
