@@ -8,9 +8,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { OverviewComponent } from './overview/overview.component';
+import { MyBotsComponent } from './my-bots/my-bots.component';
+import { CreateNewComponent } from './create-new/create-new.component';
+import { BotsLibraryComponent } from './bots-library/bots-library.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, OverviewComponent, MyBotsComponent, CreateNewComponent, BotsLibraryComponent, AccountComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
