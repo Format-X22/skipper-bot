@@ -6,23 +6,44 @@ export enum EBotState {
     DISABLED = 'DISABLED',
 }
 
+export enum EBotType {
+    FULL_AUTO = 'Full-auto bot',
+    PARAMETRIZED = 'Parametrized bot',
+    SEMI_AUTO = 'Semi-auto bot',
+    TOOL = 'Tool bot',
+}
+
 export interface BotListElement {
     name: string;
-    botStatus: EBotState;
+    type: EBotType;
+    status: EBotState;
+    state: string;
 }
 
 const BOTS_LIST_DEMO: Array<BotListElement> = [
     {
         name: 'Super bot',
-        botStatus: EBotState.ACTIVE,
+        type: EBotType.FULL_AUTO,
+        status: EBotState.ACTIVE,
+        state: 'In position',
     },
     {
         name: 'Alpha bot',
-        botStatus: EBotState.DISABLED,
+        type: EBotType.PARAMETRIZED,
+        status: EBotState.DISABLED,
+        state: '-',
     },
     {
         name: 'Beta bot',
-        botStatus: EBotState.ACTIVE,
+        type: EBotType.SEMI_AUTO,
+        status: EBotState.NEW,
+        state: '-',
+    },
+    {
+        name: 'Helper bot',
+        type: EBotType.TOOL,
+        status: EBotState.NEW,
+        state: '-',
     },
 ];
 
@@ -33,5 +54,4 @@ const BOTS_LIST_DEMO: Array<BotListElement> = [
 })
 export class MyBotsComponent {
     dataSource = BOTS_LIST_DEMO;
-    displayedColumns: Array<keyof BotListElement> = ['name', 'botStatus'];
 }

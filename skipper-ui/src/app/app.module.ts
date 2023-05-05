@@ -14,6 +14,7 @@ import { CreateNewComponent } from './create-new/create-new.component';
 import { BotsLibraryComponent } from './bots-library/bots-library.component';
 import { AccountComponent } from './account/account.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { MatTableModule } from '@angular/material/table';
         MatIconModule,
         MatListModule,
         MatTableModule,
+        MatCardModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

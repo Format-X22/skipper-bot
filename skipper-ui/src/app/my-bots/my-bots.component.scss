@@ -1,0 +1,24 @@
+mat-card {
+    margin: 20px;
+    flex-direction: row;
+
+    .title-column {
+        flex: 1;
+    }
+
+    .info-column {
+        flex: 2;
+    }
+
+    .control-column {
+        flex: 0;
+        min-width: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            margin-left: 5px;
+        }
+    }
+}
