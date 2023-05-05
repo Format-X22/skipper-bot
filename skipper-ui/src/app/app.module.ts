@@ -13,9 +13,17 @@ import { MyBotsComponent } from './my-bots/my-bots.component';
 import { CreateNewComponent } from './create-new/create-new.component';
 import { BotsLibraryComponent } from './bots-library/bots-library.component';
 import { AccountComponent } from './account/account.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-    declarations: [AppComponent, OverviewComponent, MyBotsComponent, CreateNewComponent, BotsLibraryComponent, AccountComponent],
+    declarations: [
+        AppComponent,
+        OverviewComponent,
+        MyBotsComponent,
+        CreateNewComponent,
+        BotsLibraryComponent,
+        AccountComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -24,6 +32,7 @@ import { AccountComponent } from './account/account.component';
         MatButtonModule,
         MatIconModule,
         MatListModule,
+        MatTableModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
