@@ -77,8 +77,10 @@ export class MyBotsComponent {
         // TODO -
         switch (bot.status) {
             case EBotStatus.ACTIVE:
-                bot.status = EBotStatus.BOOT_OUT;
-                setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+                this.doWithConfirm(bot, 'Stop a bot?', () => {
+                    bot.status = EBotStatus.BOOT_OUT;
+                    setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+                });
                 break;
             case EBotStatus.BOOT_OUT:
             case EBotStatus.BOOT_IN:
@@ -88,8 +90,10 @@ export class MyBotsComponent {
                 });
                 break;
             case EBotStatus.DISABLED:
-                bot.status = EBotStatus.BOOT_IN;
-                setTimeout(() => (bot.status = EBotStatus.ACTIVE), 5000);
+                this.doWithConfirm(bot, 'Launch a bot?', () => {
+                    bot.status = EBotStatus.BOOT_IN;
+                    setTimeout(() => (bot.status = EBotStatus.ACTIVE), 5000);
+                });
                 break;
         }
     }
