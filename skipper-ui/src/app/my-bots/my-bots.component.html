@@ -1,7 +1,18 @@
 <ng-template ngFor let-bot [ngForOf]="dataSource">
     <mat-card [class]="bot.status">
         <div class="status-column">
-            <button mat-fab color="basic" [class]="bot.status" (click)="onStatusClick(bot)"></button>
+            <button mat-fab color="basic" [class]="bot.status" (click)="onStatusClick(bot)">
+                <span *ngIf="bot.status === EBotStatus.ACTIVE">ON</span>
+                <span *ngIf="bot.status === EBotStatus.DISABLED">OFF</span>
+                <mat-icon
+                    *ngIf="
+                        bot.status === EBotStatus.HARD_STOP ||
+                        bot.status === EBotStatus.BOOT_IN ||
+                        bot.status === EBotStatus.BOOT_OUT
+                    "
+                    >loop</mat-icon
+                >
+            </button>
         </div>
         <div class="title-column">
             <mat-card-header>
