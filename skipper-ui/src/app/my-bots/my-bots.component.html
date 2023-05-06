@@ -1,7 +1,7 @@
 <ng-template ngFor let-bot [ngForOf]="dataSource">
     <mat-card [class]="bot.status">
         <div class="status-column">
-            <button mat-fab [class]="bot.status" (click)="onStatusClick(bot)"></button>
+            <button mat-fab color="basic" [class]="bot.status" (click)="onStatusClick(bot)"></button>
         </div>
         <div class="title-column">
             <mat-card-header>
@@ -20,27 +20,29 @@
             <button mat-mini-fab color="basic" (click)="onEditClick(bot)"><mat-icon>edit</mat-icon></button>
             <button mat-mini-fab color="basic" (click)="onStatsClick(bot)"><mat-icon>bar_chart</mat-icon></button>
             <button
-                *ngIf='bot.status === EBotState.DISABLED'
+                *ngIf="bot.status === EBotStatus.DISABLED"
                 mat-mini-fab
-                color="primary"
+                class="play-button"
                 (click)="onStartClick(bot)"
             >
                 <mat-icon>play_arrow</mat-icon>
             </button>
-            <button
-                *ngIf='bot.status === EBotState.ACTIVE'
-                mat-mini-fab
-                color="primary"
-                (click)="onStopClick(bot)"
-            >
+            <button *ngIf="bot.status === EBotStatus.ACTIVE" mat-mini-fab color="primary" (click)="onStopClick(bot)">
                 <mat-icon>stop</mat-icon>
             </button>
             <button
-                *ngIf='bot.status === EBotState.BOOT'
+                *ngIf="
+                    bot.status === EBotStatus.BOOT_IN ||
+                    bot.status === EBotStatus.BOOT_OUT ||
+                    bot.status === EBotStatus.HARD_STOP
+                "
                 mat-mini-fab
                 disabled
             ></button>
-            <button mat-mini-fab color="warn" (click)="onDeleteClick(bot)"><mat-icon>close</mat-icon></button>
+            <button *ngIf="bot.status === EBotStatus.HARD_STOP" mat-mini-fab disabled></button>
+            <button *ngIf="bot.status !== EBotStatus.HARD_STOP" mat-mini-fab color="warn" (click)="onDeleteClick(bot)">
+                <mat-icon>close</mat-icon>
+            </button>
         </div>
     </mat-card>
 </ng-template>

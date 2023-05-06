@@ -1,17 +1,15 @@
 <mat-toolbar color="primary" class="nav-bar mat-elevation-z6">
-    <nav>
-        <mat-toolbar-row>
-            <span style="margin-right: 20px">Skipper bot</span>
-            <a mat-button routerLink="overview" routerLinkActive="active"><mat-icon>map</mat-icon> Overview</a>
-            <a mat-button routerLink="my-bots" routerLinkActive="active"
-                ><mat-icon>directions_boat</mat-icon> My bots</a
-            >
-            <a mat-button routerLink="create-new" routerLinkActive="active"><mat-icon>build</mat-icon> Create new</a>
-            <a mat-button routerLink="bots-library" routerLinkActive="active"><mat-icon>apps</mat-icon> Bots library</a>
-            <span class="spacer"></span>
-            <a mat-button routerLink="account" routerLinkActive="active"><mat-icon>account_circle</mat-icon> Account</a>
-        </mat-toolbar-row>
-    </nav>
+    <mat-toolbar-row>
+        <span style="margin-right: 20px">Skipper bot</span>
+        <a mat-button routerLink="overview" routerLinkActive="active"><mat-icon>map</mat-icon> Overview</a>
+        <a mat-button routerLink="my-bots" routerLinkActive="active"
+        ><mat-icon>directions_boat</mat-icon> My bots</a
+        >
+        <a mat-button routerLink="create-new" routerLinkActive="active"><mat-icon>build</mat-icon> Create new</a>
+        <a mat-button routerLink="bots-library" routerLinkActive="active"><mat-icon>apps</mat-icon> Bots library</a>
+        <span class="spacer"></span>
+        <a mat-button routerLink="account" routerLinkActive="active"><mat-icon>account_circle</mat-icon> Account</a>
+    </mat-toolbar-row>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
