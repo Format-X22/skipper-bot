@@ -1,7 +1,7 @@
 <ng-template ngFor let-bot [ngForOf]="dataSource">
-    <mat-card>
+    <mat-card [class]="bot.status">
         <div class="status-column">
-            <button mat-fab [class]="bot.status"></button>
+            <button mat-fab [class]="bot.status" (click)="onStatusClick(bot)"></button>
         </div>
         <div class="title-column">
             <mat-card-header>
@@ -17,10 +17,30 @@
             </mat-card-content>
         </div>
         <div class="control-column">
-            <button mat-mini-fab color="basic"><mat-icon>edit</mat-icon></button>
-            <button mat-mini-fab color="basic"><mat-icon>bar_chart</mat-icon></button>
-            <button mat-mini-fab color="primary"><mat-icon>play_arrow</mat-icon></button>
-            <button mat-mini-fab color="warn"><mat-icon>close</mat-icon></button>
+            <button mat-mini-fab color="basic" (click)="onEditClick(bot)"><mat-icon>edit</mat-icon></button>
+            <button mat-mini-fab color="basic" (click)="onStatsClick(bot)"><mat-icon>bar_chart</mat-icon></button>
+            <button
+                *ngIf='bot.status === EBotState.DISABLED'
+                mat-mini-fab
+                color="primary"
+                (click)="onStartClick(bot)"
+            >
+                <mat-icon>play_arrow</mat-icon>
+            </button>
+            <button
+                *ngIf='bot.status === EBotState.ACTIVE'
+                mat-mini-fab
+                color="primary"
+                (click)="onStopClick(bot)"
+            >
+                <mat-icon>stop</mat-icon>
+            </button>
+            <button
+                *ngIf='bot.status === EBotState.BOOT'
+                mat-mini-fab
+                disabled
+            ></button>
+            <button mat-mini-fab color="warn" (click)="onDeleteClick(bot)"><mat-icon>close</mat-icon></button>
         </div>
     </mat-card>
 </ng-template>
