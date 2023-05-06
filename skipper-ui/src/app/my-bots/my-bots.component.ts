@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Dialog } from '@angular/cdk/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 export enum EBotStatus {
     ACTIVE = 'active',
@@ -16,7 +18,7 @@ export enum EBotType {
     FOLLOW = 'Follow bot',
 }
 
-export interface IBotListElement {
+export interface IBot {
     id: string;
     name: string;
     type: EBotType;
@@ -25,7 +27,7 @@ export interface IBotListElement {
     state: string;
 }
 
-const BOTS_LIST_DEMO: Array<IBotListElement> = [
+const BOTS_LIST_DEMO: Array<IBot> = [
     {
         id: 'aaa',
         name: 'Super bot',
@@ -69,10 +71,10 @@ export class MyBotsComponent {
     EBotStatus = EBotStatus;
     dataSource = BOTS_LIST_DEMO;
 
-    onStatusClick(bot: IBotListElement): void {
-        // TODO -
-        alert(bot.name);
+    constructor(public dialog: Dialog) {}
 
+    onStatusClick(bot: IBot): void {
+        // TODO -
         switch (bot.status) {
             case EBotStatus.ACTIVE:
                 bot.status = EBotStatus.BOOT_OUT;
@@ -80,9 +82,10 @@ export class MyBotsComponent {
                 break;
             case EBotStatus.BOOT_OUT:
             case EBotStatus.BOOT_IN:
-                alert('Hard stop?');
-                bot.status = EBotStatus.HARD_STOP;
-                setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+                this.doWithConfirm(bot, 'Make a hard stop of the bot?', () => {
+                    bot.status = EBotStatus.HARD_STOP;
+                    setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+                });
                 break;
             case EBotStatus.DISABLED:
                 bot.status = EBotStatus.BOOT_IN;
@@ -91,51 +94,61 @@ export class MyBotsComponent {
         }
     }
 
-    onEditClick(bot: IBotListElement): void {
+    onEditClick(bot: IBot): void {
         // TODO -
-        alert(bot.name);
     }
 
-    onStatsClick(bot: IBotListElement): void {
+    onStatsClick(bot: IBot): void {
         // TODO -
-        alert(bot.name);
     }
 
-    onStartClick(bot: IBotListElement): void {
+    onStartClick(bot: IBot): void {
         // TODO -
-        alert(bot.name);
-        bot.status = EBotStatus.BOOT_IN;
-        setTimeout(() => (bot.status = EBotStatus.ACTIVE), 5000);
+        this.doWithConfirm(bot, 'Launch a bot?', () => {
+            bot.status = EBotStatus.BOOT_IN;
+            setTimeout(() => (bot.status = EBotStatus.ACTIVE), 5000);
+        });
     }
 
-    onStopClick(bot: IBotListElement): void {
+    onStopClick(bot: IBot): void {
         // TODO -
-        alert(bot.name);
-        bot.status = EBotStatus.BOOT_OUT;
-        setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+        this.doWithConfirm(bot, 'Stop a bot?', () => {
+            bot.status = EBotStatus.BOOT_OUT;
+            setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+        });
     }
 
-    onDeleteClick(bot: IBotListElement): void {
+    onDeleteClick(bot: IBot): void {
         // TODO -
-        alert(bot.name);
-
         switch (bot.status) {
             case EBotStatus.ACTIVE:
-                alert('Hard stop?');
-                bot.status = EBotStatus.HARD_STOP;
-                setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
-                break;
             case EBotStatus.BOOT_IN:
             case EBotStatus.BOOT_OUT:
-                alert('Hard stop?');
-                bot.status = EBotStatus.HARD_STOP;
-                setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+                this.doWithConfirm(bot, 'Make a hard stop of the bot?', () => {
+                    bot.status = EBotStatus.HARD_STOP;
+                    setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
+                });
                 break;
             case EBotStatus.DISABLED:
-                const index = this.dataSource.indexOf(bot);
+                this.doWithConfirm(bot, 'Remove a bot from the bot list?', () => {
+                    const index = this.dataSource.indexOf(bot);
 
-                this.dataSource.splice(index, 1);
+                    this.dataSource.splice(index, 1);
+                });
                 break;
         }
+    }
+
+    private doWithConfirm(bot: IBot, message: string, action: (bot: IBot) => void) {
+        const confirmRef = this.dialog.open<boolean>(ConfirmDialogComponent, {
+            width: '300px',
+            data: { message },
+        });
+
+        confirmRef.closed.subscribe((result) => {
+            if (result) {
+                action(bot);
+            }
+        });
     }
 }

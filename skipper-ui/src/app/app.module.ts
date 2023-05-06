@@ -15,9 +15,12 @@ import { BotsLibraryComponent } from './bots-library/bots-library.component';
 import { AccountComponent } from './account/account.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
+        ConfirmDialogComponent,
         AppComponent,
         OverviewComponent,
         MyBotsComponent,
@@ -35,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
         MatListModule,
         MatTableModule,
         MatCardModule,
+        MatDialogModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
