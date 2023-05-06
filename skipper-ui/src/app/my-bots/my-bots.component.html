@@ -1,5 +1,8 @@
 <ng-template ngFor let-bot [ngForOf]="dataSource">
     <mat-card>
+        <div class="status-column">
+            <button mat-fab [class]="bot.status"></button>
+        </div>
         <div class="title-column">
             <mat-card-header>
                 <mat-card-title>{{ bot.name }}</mat-card-title>
@@ -8,10 +11,14 @@
             <mat-card-content></mat-card-content>
         </div>
         <div class="info-column">
-            <mat-card-content></mat-card-content>
+            <mat-card-content>
+                <p>Online time: {{ bot.onlineTime }}</p>
+                <p>State: {{ bot.state }}</p>
+            </mat-card-content>
         </div>
         <div class="control-column">
             <button mat-mini-fab color="basic"><mat-icon>edit</mat-icon></button>
+            <button mat-mini-fab color="basic"><mat-icon>bar_chart</mat-icon></button>
             <button mat-mini-fab color="primary"><mat-icon>play_arrow</mat-icon></button>
             <button mat-mini-fab color="warn"><mat-icon>close</mat-icon></button>
         </div>

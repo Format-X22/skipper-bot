@@ -2,6 +2,26 @@ mat-card {
     margin: 20px;
     flex-direction: row;
 
+    .status-column {
+        flex: 0;
+        min-width: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            &.active {
+                background-color: #0a9e0a;
+            }
+            &.disabled {
+                background-color: #00000060;
+            }
+            &.boot {
+                background-color: rgba(255, 251, 0, 0.38);
+            }
+        }
+    }
+
     .title-column {
         flex: 1;
     }
@@ -12,13 +32,13 @@ mat-card {
 
     .control-column {
         flex: 0;
-        min-width: 180px;
+        min-width: 240px;
         display: flex;
         align-items: center;
         justify-content: center;
 
         button {
-            margin-left: 5px;
+            margin-left: 8px;
         }
     }
 }
