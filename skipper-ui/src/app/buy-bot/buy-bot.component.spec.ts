@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BotsLibraryComponent } from './bots-library.component';
+import { BuyBotComponent } from './buy-bot.component';
 
-describe('BotsLibraryComponent', () => {
-    let component: BotsLibraryComponent;
-    let fixture: ComponentFixture<BotsLibraryComponent>;
+describe('BuyBotComponent', () => {
+    let component: BuyBotComponent;
+    let fixture: ComponentFixture<BuyBotComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            declarations: [BotsLibraryComponent],
+            declarations: [BuyBotComponent],
         });
-        fixture = TestBed.createComponent(BotsLibraryComponent);
+        fixture = TestBed.createComponent(BuyBotComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

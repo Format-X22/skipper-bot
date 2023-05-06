@@ -11,12 +11,13 @@ import { MatListModule } from '@angular/material/list';
 import { OverviewComponent } from './overview/overview.component';
 import { MyBotsComponent } from './my-bots/my-bots.component';
 import { CreateNewComponent } from './create-new/create-new.component';
-import { BotsLibraryComponent } from './bots-library/bots-library.component';
 import { AccountComponent } from './account/account.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BuyBotComponent } from './buy-bot/buy-bot.component';
+import { SellBotComponent } from './sell-bot/sell-bot.component';
 
 @NgModule({
     declarations: [
@@ -25,8 +26,9 @@ import { MatDialogModule } from '@angular/material/dialog';
         OverviewComponent,
         MyBotsComponent,
         CreateNewComponent,
-        BotsLibraryComponent,
         AccountComponent,
+        BuyBotComponent,
+        SellBotComponent,
     ],
     imports: [
         BrowserModule,
