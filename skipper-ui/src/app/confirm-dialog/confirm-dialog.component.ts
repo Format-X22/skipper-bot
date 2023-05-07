@@ -7,7 +7,10 @@ import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
     styleUrls: ['./confirm-dialog.component.scss'],
 })
 export class ConfirmDialogComponent {
-    constructor(public dialogRef: DialogRef<boolean>, @Inject(DIALOG_DATA) public data: { message: string }) {}
+    constructor(
+        public dialogRef: DialogRef<boolean>,
+        @Inject(DIALOG_DATA) public data: { icon: string; message: string },
+    ) {}
 
     ok(): void {
         this.dialogRef.close(true);

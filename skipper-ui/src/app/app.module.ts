@@ -18,6 +18,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { BuyBotComponent } from './buy-bot/buy-bot.component';
 import { SellBotComponent } from './sell-bot/sell-bot.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
     declarations: [
@@ -41,6 +42,7 @@ import { SellBotComponent } from './sell-bot/sell-bot.component';
         MatTableModule,
         MatCardModule,
         MatDialogModule,
+        MatChipsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

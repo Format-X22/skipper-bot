@@ -1,6 +1,9 @@
 <mat-card>
     <mat-card-title>Confirmation</mat-card-title>
-    <mat-card-content>{{ data.message }}</mat-card-content>
+    <mat-card-content>
+        <mat-icon>{{ data.icon }}</mat-icon>
+        <span class="message">{{ data.message }}</span></mat-card-content
+    >
     <mat-card-actions>
         <button mat-raised-button color="primary" (click)="ok()">Ok</button>
         <button mat-raised-button color="accent" (click)="cancel()">Cancel</button>

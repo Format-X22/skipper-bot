@@ -77,20 +77,20 @@ export class MyBotsComponent {
         // TODO -
         switch (bot.status) {
             case EBotStatus.ACTIVE:
-                this.doWithConfirm(bot, 'Stop a bot?', () => {
+                this.doWithConfirm(bot, 'stop', 'Stop a bot?', () => {
                     bot.status = EBotStatus.BOOT_OUT;
                     setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
                 });
                 break;
             case EBotStatus.BOOT_OUT:
             case EBotStatus.BOOT_IN:
-                this.doWithConfirm(bot, 'Make a hard stop of the bot?', () => {
+                this.doWithConfirm(bot, 'close', 'Make a hard stop of the bot?', () => {
                     bot.status = EBotStatus.HARD_STOP;
                     setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
                 });
                 break;
             case EBotStatus.DISABLED:
-                this.doWithConfirm(bot, 'Launch a bot?', () => {
+                this.doWithConfirm(bot, 'play_arrow', 'Launch a bot?', () => {
                     bot.status = EBotStatus.BOOT_IN;
                     setTimeout(() => (bot.status = EBotStatus.ACTIVE), 5000);
                 });
@@ -108,7 +108,7 @@ export class MyBotsComponent {
 
     onStartClick(bot: IBot): void {
         // TODO -
-        this.doWithConfirm(bot, 'Launch a bot?', () => {
+        this.doWithConfirm(bot, 'play_arrow', 'Launch a bot?', () => {
             bot.status = EBotStatus.BOOT_IN;
             setTimeout(() => (bot.status = EBotStatus.ACTIVE), 5000);
         });
@@ -116,7 +116,7 @@ export class MyBotsComponent {
 
     onStopClick(bot: IBot): void {
         // TODO -
-        this.doWithConfirm(bot, 'Stop a bot?', () => {
+        this.doWithConfirm(bot, 'stop', 'Stop a bot?', () => {
             bot.status = EBotStatus.BOOT_OUT;
             setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
         });
@@ -128,13 +128,13 @@ export class MyBotsComponent {
             case EBotStatus.ACTIVE:
             case EBotStatus.BOOT_IN:
             case EBotStatus.BOOT_OUT:
-                this.doWithConfirm(bot, 'Make a hard stop of the bot?', () => {
+                this.doWithConfirm(bot, 'close', 'Make a hard stop of the bot?', () => {
                     bot.status = EBotStatus.HARD_STOP;
                     setTimeout(() => (bot.status = EBotStatus.DISABLED), 5000);
                 });
                 break;
             case EBotStatus.DISABLED:
-                this.doWithConfirm(bot, 'Remove a bot from the bot list?', () => {
+                this.doWithConfirm(bot, 'close', 'Remove a bot from the bot list?', () => {
                     const index = this.dataSource.indexOf(bot);
 
                     this.dataSource.splice(index, 1);
@@ -143,10 +143,10 @@ export class MyBotsComponent {
         }
     }
 
-    private doWithConfirm(bot: IBot, message: string, action: (bot: IBot) => void) {
+    private doWithConfirm(bot: IBot, icon: string, message: string, action: (bot: IBot) => void) {
         const confirmRef = this.dialog.open<boolean>(ConfirmDialogComponent, {
             width: '300px',
-            data: { message },
+            data: { icon, message },
         });
 
         confirmRef.closed.subscribe((result) => {

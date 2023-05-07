@@ -4,12 +4,18 @@ mat-card {
     mat-card-title {
         padding-left: 16px;
         padding-bottom: 5px;
-        border-bottom: 1px solid #00000060;
     }
 
     mat-card-content {
         padding-top: 20px;
-        padding-bottom: 20px;
+        padding-bottom: 7px;
+        border-top: 1px solid #00000060;
+
+        .message {
+            vertical-align: top;
+            line-height: 24px;
+            padding-left: 8px;
+        }
     }
 
     mat-card-actions {
