@@ -14,12 +14,12 @@ export class BotController {
         return this.botService.getBot(id);
     }
 
-    @Get('')
+    @Get('list')
     getBots(): TListResponse<Bot> {
         return this.botService.getBots();
     }
 
-    @Post()
+    @Post('new')
     createBot(@Body() data: CreateBotDto): Bot {
         return this.botService.createBot(data);
     }
@@ -39,7 +39,7 @@ export class BotController {
         return this.botService.startBot(id);
     }
 
-    @Post('id:/stop')
+    @Post(':id/stop')
     stopBot(@Param('id', ParseUUIDPipe) id: string): void {
         return this.botService.stopBot(id);
     }
