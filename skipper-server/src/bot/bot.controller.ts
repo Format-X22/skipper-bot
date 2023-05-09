@@ -9,9 +9,9 @@ import { BotService } from './bot.service';
 export class BotController {
     constructor(private botService: BotService) {}
 
-    @Get(':id')
-    getBot(@Param('id', ParseUUIDPipe) id: string): Bot {
-        return this.botService.getBot(id);
+    @Post('new')
+    createBot(@Body() data: CreateBotDto): Bot {
+        return this.botService.createBot(data);
     }
 
     @Get('list')
@@ -19,9 +19,9 @@ export class BotController {
         return this.botService.getBots();
     }
 
-    @Post('new')
-    createBot(@Body() data: CreateBotDto): Bot {
-        return this.botService.createBot(data);
+    @Get(':id')
+    getBot(@Param('id', ParseUUIDPipe) id: string): Bot {
+        return this.botService.getBot(id);
     }
 
     @Patch(':id')
