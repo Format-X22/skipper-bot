@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
 import { StatusModule } from './status/status.module';
+import { BotModule } from './bot/bot.module';
 
 @Module({
-    imports: [StatusModule],
+    imports: [StatusModule, BotModule],
     controllers: [],
     providers: [],
 })
